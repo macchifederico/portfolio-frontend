@@ -10,7 +10,7 @@ import { ExpLaboral } from '../models/ExpLaboral';
 })
 export class ExplaboralService {
 
-  expURL = "http://127.0.0.1:8080/api/experiencia/"
+  expURL = "https://fedemacchi-portfolio.herokuapp.com/api/experiencia/"
 
   constructor(private http: HttpClient) { }
 

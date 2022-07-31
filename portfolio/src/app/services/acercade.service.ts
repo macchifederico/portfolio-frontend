@@ -8,7 +8,7 @@ import { Acercade } from '../models/Acercade';
 })
 export class AcercadeService {
 
-  acercaURL = "http://localhost:8080/api/acercade/"
+  acercaURL = "https://fedemacchi-portfolio.herokuapp.com/api/acercade/"
 
   constructor(private http: HttpClient) { }
 
