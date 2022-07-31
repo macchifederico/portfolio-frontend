@@ -8,7 +8,7 @@ import { Educacion } from '../models/Educacion';
 })
 export class EducacionService {
 
-  eduURL = "https://fedemacchi-portfolio.herokuapp.com/educacion/"
+  eduURL = "https://fedemacchi-portfolio.herokuapp.com/api/educacion/"
 
   constructor(private http: HttpClient) { }
 
