@@ -1,0 +1,27 @@
+<div class="card-body border">
+    <div>
+        <h3>
+            Skills
+            <i class="fa-solid fa-circle-plus add" *ngIf="isLogged" routerLink="/nuevoskill"></i>
+        </h3>
+        
+    </div>  
+    <div class="row">
+        <div class="col-sm-4" *ngFor="let skill of skills">
+            <div class="card-body">
+                <h5 class="card-tittle" style="text-align: center;">{{skill.tecnologia}}</h5>
+                <div class="icons">
+                    <i class="fa-solid fa-trash trash" *ngIf="isLogged" (click)="delete(skill.id)"></i>
+                    <i class="fa-solid fa-pencil pencil" *ngIf="isLogged" routerLink="/editarskill/{{skill.id}}"></i>
+                </div>
+                <div class="progress" style="height: 25px;">
+                    <div class="progress-bar progress-bar-striped" role="progressbar" [ngStyle]="{'width.%': skill.porcentaje}" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                        {{skill.porcentaje}}%
+                    </div>
+                </div>
+            </div>            
+        </div>
+    </div>
+</div>
+
+    

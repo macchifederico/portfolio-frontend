@@ -1,0 +1,17 @@
+<div class="container" *ngIf="acercade">
+    <div class="row">
+        <div>
+            <form (ngSubmit)="onUpdate()" novalidate #f="ngForm" class="col-lg-8 offset-lg-2 mt-5" *ngIf="isLogged">
+                <div class="form-group mb-3">
+                    <label for="presentProf">Editar acerca de:</label>
+                    <textarea rows="10" class="form-control" name="presentProf" id="presentProf" [(ngModel)]="acercade.presentProf" required></textarea>
+                </div>
+                <div style="text-align: center;">
+                    <button type="submit" class="btn btn-primary btn-block">Editar</button>
+                    <button class="btn btn-primary btn-block" style="margin-left: 10px;" routerLink="/portfolio">Volver</button>
+                </div>
+
+            </form>
+        </div>   
+    </div>
+</div>

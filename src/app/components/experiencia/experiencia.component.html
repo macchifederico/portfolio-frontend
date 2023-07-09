@@ -1,0 +1,20 @@
+<div class="card-body border">
+    <div>
+        <h3>
+            Experiencia Laboral
+           <i class="fa-solid fa-circle-plus add" routerLink="/nuevaexp" *ngIf="isLogged"></i>
+        </h3>
+    </div>
+    
+    <div class="row" *ngFor="let experiencia of expLaboral">
+        <div class="col-sm-12">
+            <div class="card-body">
+            <h5 class="card-title">{{experiencia.nombreE}}</h5>
+            <p class="card-text">{{experiencia.empresaE}}</p>
+            <p class="card-text text-muted">{{experiencia.descripcionE}}</p>
+            <i class="fa-solid fa-trash trash" *ngIf="isLogged" (click)="delete(experiencia.id)"></i>
+            <i class="fa-solid fa-pencil pencil" *ngIf="isLogged" routerLink="/editarexp/{{experiencia.id}}"></i>
+            </div>
+        </div>
+    </div>
+</div>

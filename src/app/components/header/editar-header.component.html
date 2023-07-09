@@ -1,0 +1,30 @@
+<div class="container" *ngIf="persona">
+    <div class="row">
+        <div>
+            <form (ngSubmit)="onUpdate()" novalidate #f="ngForm" class="col-lg-8 offset-lg-2 mt-5">
+                <h2>Editar experiencia laboral</h2>
+                <div class="form-group mb-3">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" class="form-control" name="nombre" id="nombre" [(ngModel)]="persona.nombre" required>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="apellido">Apellido:</label>
+                    <input type="text" class="form-control" name="apellido" id="apellido" [(ngModel)]="persona.apellido" required>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="urlImagen">Url imagen:</label>
+                    <input type="text" class="form-control" name="urlImagen" id="imagenUrl" [(ngModel)]="persona.imageUrl" required>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="ocupacion">Ocupacion - Puesto:</label>
+                    <input type="text" class="form-control" name="ocupacion" id="ocupacion" [(ngModel)]="persona.ocupacion" required>
+                </div>
+                <div style="text-align: center;">
+                    <button type="submit" class="btn btn-primary btn-block">Editar</button>
+                    <button class="btn btn-primary btn-block" style="margin-left: 10px;" routerLink="/portfolio">Volver</button>
+                </div>
+
+            </form>
+        </div>   
+    </div>
+</div>

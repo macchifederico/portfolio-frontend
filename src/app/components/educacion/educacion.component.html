@@ -1,0 +1,16 @@
+<div class="card-body border">
+    <h3>
+        Educación
+        <i class="fa-solid fa-circle-plus add" routerLink="/nuevaedu" *ngIf="isLogged"></i>
+    </h3>
+    <div class="row" *ngFor="let edu of educacion">
+        <div class="col-sm-12">
+            <div class="card-body">
+            <h5 class="card-title">{{edu.titulo}}</h5>
+            <p class="card-text">{{edu.institucion}}</p>
+            <p class="card-text text-muted">{{edu.fechaInicio +" - "+ edu.fechaFin}}</p>
+            <i class="fa-solid fa-trash trash" *ngIf="isLogged" (click)="delete(edu.id)"></i>
+            <i class="fa-solid fa-pencil pencil" *ngIf="isLogged" routerLink="/editaredu/{{edu.id}}"></i>
+        </div>
+    </div>
+</div>

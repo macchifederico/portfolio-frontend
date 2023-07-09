@@ -1,0 +1,32 @@
+.nav_logo{
+    background-color: #02358e;
+}
+
+.logo{
+    color: #fff;
+    width: 90px;
+    height: 50px;
+}
+
+.btn_login{
+    text-decoration: none;
+    font-size: medium;
+}
+
+.social{
+    float: right;
+}
+
+.ig{
+    width: 30px;
+    height: 30px;
+}
+
+.gh{
+    width: 30px;
+    height: 30px;
+}
+
+.btn_login{
+    color: #fff;
+}

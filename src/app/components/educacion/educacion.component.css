@@ -1,0 +1,20 @@
+.trash{
+    float:right;
+    margin-left: 50px;
+}
+
+.pencil{
+    float:right;
+} 
+
+.buttons{
+    text-align: center;
+}
+
+.agregar{
+    margin-left: 20px;
+}
+
+.volver{
+    margin-right: 20px;
+}

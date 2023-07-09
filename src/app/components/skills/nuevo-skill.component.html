@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="row">
+        <div>
+            <form (ngSubmit)="onCreate()" novalidate #f="ngForm" class="col-lg-8 offset-lg-2 mt-5">
+                <h2>Ingresar Nueva Skill</h2>
+                <div class="form-group mb-3">
+                    <label for="tecnologia">Nombre de la tecnologia:</label>
+                    <input type="text" class="form-control" name="tecnologia" id="tecnologia" [(ngModel)]="tecnologia" required>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="porcentaje">Porcentaje de avance:</label>
+                    <input type="number" class="form-control" name="porcentaje" id="porcentaje" placeholder="" [(ngModel)]="porcentaje" required>
+                </div>
+                <div class="buttons">
+                    <button type="button" class="btn btn-primary btn-block volver" routerLink="/portfolio">Volver</button>
+                    <button type="submit" class="btn btn-secondary btn-block agregar">Agregar</button>
+                </div>           
+            </form>
+        </div>   
+    </div>
+</div>

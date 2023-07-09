@@ -1,0 +1,19 @@
+<div class="card-body border">
+    <h3>
+        Proyectos
+        <i class="fa-solid fa-circle-plus add" routerLink="/nuevopro" *ngIf="isLogged"></i>
+    </h3>
+    <div class="row">
+        <div class="col-sm-12" *ngFor="let pro of proyectos">
+            <div class="card-body">
+                <h5 class="card-title">{{pro.nombreProyecto}}</h5>
+                <p class="card-text">{{pro.descrProyecto}}</p>
+                <p><a href="#">{{pro.urlProyecto}}</a></p>
+                <i class="fa-solid fa-trash trash" *ngIf="isLogged" (click)="delete(pro.id)"></i>
+                <i class="fa-solid fa-pencil pencil" *ngIf="isLogged" ></i>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 
+routerLink="/editarpro/{{pro.id}}" -->
