@@ -8,28 +8,28 @@ import { Proyecto } from '../models/Proyecto';
 })
 export class ProyectoService {
 
-  proURL = "http://localhost:3000/api/proyecto/";
+  URL = "http://localhost:3000/api/proyecto/";
 
   constructor(private http: HttpClient) { }
 
-  public lista() : Observable<Proyecto[]>{
-    return this.http.get<Proyecto[]>(this.proURL + 'lista');
+  public listaProyectos() : Observable<any>{
+    return this.http.get<any>(`${this.URL}`);
   }
 
-  public detail(id: number) : Observable<Proyecto>{
-    return this.http.get<Proyecto>(this.proURL + `detail/${id}`);
+  public proyectoPorId(id: any) : Observable<any>{
+    return this.http.get<Proyecto>(`${this.URL}/${id}`);
   }
 
-  public save(proyecto: Proyecto): Observable<any>{
-    return this.http.post<any>(this.proURL + `crear`, proyecto);
+  public crearProyecto(proyecto: Proyecto): Observable<any>{
+    return this.http.post<any>(`${this.URL}`, proyecto);
   }
 
-  public update(id: number, proyecto: Proyecto): Observable<any>{
-    return this.http.put<any>(this.proURL + `editar/${id}`, proyecto);
+  public actualizarProyecto(proyecto: Proyecto): Observable<any>{
+    return this.http.put<any>(`${this.URL}`, proyecto);
   }
 
-  public delete(id: number): Observable<any>{
-    return this.http.delete<any>(this.proURL + `borrar/${id}`);
+  public borrarProyecto(id: number): Observable<any>{
+    return this.http.delete<any>(this.URL + `borrar/${id}`);
   }
 
 }

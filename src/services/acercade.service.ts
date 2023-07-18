@@ -16,12 +16,12 @@ export class AcercadeService {
     return this.http.get<any>(`${this.URL}`, id_persona);
   }
 
-  public save(acercade: Acercade): Observable<any>{
-    return this.http.post<any>(`${this.URL}/crear`, acercade);
+  public save(id_persona: number, acercade: Acercade): Observable<any>{
+    return this.http.post<any>(`${this.URL}`, {id_persona, acercade});
   }
 
-  public update(id: number, acercade: Acercade): Observable<any>{
-    return this.http.put<any>(this.URL + `editar/`, {id, acercade});
+  public update(id_persona: number, acercade: Acercade): Observable<any>{
+    return this.http.put<any>(`${this.URL}`, {id_persona, acercade});
   }
 
   public delete(id: number): Observable<any>{

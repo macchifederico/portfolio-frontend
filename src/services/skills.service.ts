@@ -8,28 +8,28 @@ import { Skills } from '../models/Skills';
 })
 export class SkillsService {
 
-  skillsURL = "http://localhost:3000/api/skills/";
+  URL = "http://localhost:3000/api/skills";
 
   constructor(private http: HttpClient) { }
 
-  public lista() : Observable<Skills[]>{
-    return this.http.get<Skills[]>(this.skillsURL + 'lista');
+  public obtenerListaSkills() : Observable<any>{
+    return this.http.get<any>(`${this.URL}`);
   }
 
-  public detail(id: number) : Observable<Skills>{
-    return this.http.get<Skills>(this.skillsURL + `detail/${id}`);
+  public obtenerSkillsPorId(id: number) : Observable<any>{    
+    return this.http.get<any>(`${this.URL}/${id}`);
   }
 
-  public save(skill: Skills): Observable<any>{
-    return this.http.post<any>(this.skillsURL + `crear`, skill);
+  public crearSkill(skill: Skills): Observable<any>{
+    return this.http.post<any>(`${this.URL}`, skill);
   }
 
-  public update(id: number, skill: Skills): Observable<any>{
-    return this.http.put<any>(this.skillsURL + `editar/${id}`, skill);
+  public actualizarSkill(id: number, skill: Skills): Observable<any>{
+    return this.http.put<any>(`${this.URL}/${id}`, skill);
   }
 
-  public delete(id: number): Observable<any>{
-    return this.http.delete<any>(this.skillsURL + `borrar/${id}`);
+  public borrarSkill(id: number): Observable<any>{
+    return this.http.delete<any>(`${this.URL}/${id}`);
   }
 
 }

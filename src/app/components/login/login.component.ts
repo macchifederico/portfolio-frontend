@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   password! : string;
   roles : string[] = [];
   errMsj! : string;
-
+  persona: Persona = new Persona();
 
   constructor(private authService: AuthService,
               private router: Router){
@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit {
   // }
 
   login(){
-   this.authService.login(this.email, this.password).subscribe({
+   this.authService.login(this.persona).subscribe({
      next: (res) => {
       if(res){
         localStorage.setItem('token', res.token);

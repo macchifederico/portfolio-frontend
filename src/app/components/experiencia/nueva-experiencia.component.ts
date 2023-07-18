@@ -10,9 +10,7 @@ import { ExplaboralService } from 'src/services/explaboral.service';
 })
 export class NuevaExperienciaComponent implements OnInit {
 
-  nombreE: string = '';
-  descripcionE: string = '';
-  empresaE: string = '';
+  expe: ExpLaboral = new ExpLaboral();
 
   constructor(private sExp: ExplaboralService, private router: Router) { }
 
@@ -20,14 +18,13 @@ export class NuevaExperienciaComponent implements OnInit {
   }
 
   onCreate(): void{
-    const expe = new ExpLaboral(this.nombreE, this.empresaE, this.descripcionE);
-    this.sExp.save(expe).subscribe(
-      data => {
-        this.router.navigate(['portfolio']);
-      }, err => {
-        alert("Experiencia laboral borrada con éxito")
-        this.router.navigate(['portfolio']);
+    this.sExp.save(this.expe).subscribe({
+      next: (data) => {
+        console.log(data);
+      },
+      error: (e) => {
+        console.log(e);
       }
-      )
+    })
   }
 }

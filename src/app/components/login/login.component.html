@@ -2,11 +2,11 @@
     <form #f = "ngForm" class="col-lg-8 offset-lg-2 mt-5" (ngSubmit)="login()" novalidate>
       <div class="mb-3">
         <label for="nombre" class="form-label" for="nombreUsuario">Nombre</label>
-        <input type="text" id="nombreUsuario" class="form-control" name="nombreUsuario" [(ngModel)]="email" required/>
+        <input type="text" id="nombreUsuario" class="form-control" name="nombreUsuario" [(ngModel)]="persona.email" required/>
       </div>
       <div class="mb-3">
         <label for="password" class="form-label" for="password">Password</label>
-        <input type="password" id="password" class="form-control" name="password" [(ngModel)]="password" required/>
+        <input type="password" id="password" class="form-control" name="password" [(ngModel)]="persona.password" required/>
       </div>
       <button type="submit" class="btn btn-primary">Login</button>
     </form>

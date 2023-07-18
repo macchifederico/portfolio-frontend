@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Proyecto } from 'src/models/Proyecto';
+import { AuthService } from 'src/services/auth.service';
 import { ProyectoService } from 'src/services/proyecto.service';
 
 @Component({
@@ -11,25 +12,28 @@ import { ProyectoService } from 'src/services/proyecto.service';
 
 export class ProyectosComponent implements OnInit {
 
-  constructor(private sPro: ProyectoService, private router: Router) { }
+  constructor(private sPro: ProyectoService, private router: Router, public authService: AuthService) { }
 
-  isLogged = false;
   proyectos: Proyecto[] = [];
 
   ngOnInit(): void {
-   
+   this.cargarExperiencia();
   }
 
   cargarExperiencia(): void{
-    this.sPro.lista().subscribe( 
-      data => {this.proyectos = data;
-
-      })
+    this.sPro.listaProyectos().subscribe({
+      next: (res) => {
+        this.proyectos = res.proyectos;
+      },
+      error: (e) => {
+        console.log(e);
+      }
+    })
   }
 
   delete(id?: number){
     if(id != null){
-      this.sPro.delete(id).subscribe(
+      this.sPro.borrarProyecto(id).subscribe(
         data => {
           alert("Proyecto borrado con éxito");
           window.location.reload();

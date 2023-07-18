@@ -10,27 +10,27 @@ import { ExpLaboral } from '../models/ExpLaboral';
 })
 export class ExplaboralService {
 
-  expURL = "http://localhost:3000/api/experiencia/"
+  URL = "http://localhost:3000/api/experiencia"
 
   constructor(private http: HttpClient) { }
 
-  public lista() : Observable<ExpLaboral[]>{
-    return this.http.get<ExpLaboral[]>(this.expURL);
+  public lista(id_persona: any) : Observable<any>{
+    return this.http.get<any>(`${this.URL}`, id_persona);
   }
 
-  public detail(id: number): Observable<any>{
-    return this.http.get<any>(this.expURL + `detail/${id}`);
+  public detail(id_persona: any, id_experiencia: any) : Observable<any>{
+    return this.http.get<any>(`${this.URL}/${id_experiencia}`, id_persona);
   }
 
   public save(experiencia: ExpLaboral): Observable<any>{
-    return this.http.post<any>(this.expURL + 'crear', experiencia);
+    return this.http.post<any>(`${this.URL}`, experiencia);
   }
 
-  public update(id: number, experiencia: ExpLaboral): Observable<any>{
-    return this.http.put<any>(this.expURL + `editar/${id}`, experiencia);
+  public update(id_persona: number, experiencia: ExpLaboral): Observable<any>{
+    return this.http.put<any>(`${this.URL}/${id_persona}`, experiencia);
   }
 
-  public delete(id: number): Observable<any>{
-    return this.http.delete<any>(this.expURL + `borrar/${id}`);
+  public delete(id_experiencia: number, id_persona: any): Observable<any>{
+    return this.http.delete<any>(`${this.URL}/${id_experiencia}`, id_persona);
   }
 }

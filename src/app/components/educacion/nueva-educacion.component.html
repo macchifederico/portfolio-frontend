@@ -5,19 +5,19 @@
                 <h2>Editar experiencia laboral</h2>
                 <div class="form-group mb-3">
                     <label for="titulo">Título</label>
-                    <input type="text" class="form-control" name="titulo" id="titulo" [(ngModel)]="titulo" required>
+                    <input type="text" class="form-control" name="titulo" id="titulo" [(ngModel)]="edu.titulo" required>
                 </div>
                 <div class="form-group mb-3">
                     <label for="institucion">Nombre de la institucion</label>
-                    <input type="text" class="form-control" name="institucion" id="institucion" [(ngModel)]="institucion" required>
+                    <input type="text" class="form-control" name="institucion" id="institucion" [(ngModel)]="edu.institucion" required>
                 </div>
                 <div class="form-group mb-3">
                     <label for="fechaInicio">Fecha inicio</label>
-                    <input type="text" class="form-control" name="fechaInicio" id="fechaInicio" [(ngModel)]="fechaInicio" required>
+                    <input type="date" class="form-control" name="fechaInicio" id="fechaInicio" [(ngModel)]="edu.fechaInicio" required>
                 </div>
                 <div class="form-group mb-3">
                     <label for="fechaFin">Fecha fin</label>
-                    <input type="text" class="form-control" name="fechaFin" id="fechaFin" [(ngModel)]="fechaFin" required>
+                    <input type="date" class="form-control" name="fechaFin" id="fechaFin" [(ngModel)]="edu.fechaFin" required>
                 </div>
                 <div class="buttons">
                     <button type="button" class="btn btn-primary btn-block volver" routerLink="/portfolio">Volver</button>

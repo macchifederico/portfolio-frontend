@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Educacion } from 'src/models/Educacion';
 import { EducacionService } from 'src/services/educacion.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-nueva-educacion',
@@ -16,23 +17,40 @@ export class NuevaEducacionComponent implements OnInit {
   fechaInicio: string = '';
   fechaFin: string = '';
 
+  edu: Educacion = new Educacion();
+
   constructor(private sEdu: EducacionService, private router: Router) {
    }
 
   ngOnInit(): void {
   }
 
-  onCreate(): void{
-    const edu = new Educacion(this.titulo, this.institucion, this.fechaInicio,this.fechaFin);
-    this.sEdu.save(edu).subscribe(
-      data => { 
-        this.router.navigate(['/portfolio']);
-        
-      }, err =>{  
-        this.router.navigate(['/portfolio']);
-        alert("Educacion creada con éxito");      
-      }
-    )
-  }
-
+  onCreate(){
+    this.sEdu.save(this.edu).subscribe({
+      next: (res) => {
+        Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: res.msg,
+            showConfirmButton: false,
+            timer: 2000
+            }),
+            setTimeout(() => {
+              this.router.navigate(['/portfolio']);
+            }, 3000);
+      },
+      error: (e) => {
+        Swal.fire({
+          position: 'center',
+          icon: 'warning',
+          title: e.msg,
+          showConfirmButton: false,
+          timer: 2000
+          }),
+          setTimeout(() => {
+            this.router.navigate(['/portfolio']);
+          }, 3000);     
+        }
+      })
+    }
 }

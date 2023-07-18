@@ -1,12 +1,13 @@
 <div class="card-body border">
     <h3>
         Acerca de
+        <i class="fa-solid fa-circle-plus add" routerLink="/nuevoacerca" *ngIf="authService.loggedIn()"></i>
     </h3>
     <div class="card-text">
         <div class="row">
             <div class="col-sm-12">
-                <p>{{acercade.presentProf}}</p> 
-                <i class="fa-solid fa-pencil pencil" *ngIf="isLogged" routerLink="/editaracerca"></i>
+                <p *ngIf="acercade">{{acercade.presentProf}}</p>
+                <i class="fa-solid fa-pencil pencil" *ngIf="authService.loggedIn()" routerLink="/editaracerca/{{acercade.id}}"></i>
             </div>         
         </div>
     </div>

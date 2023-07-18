@@ -10,17 +10,32 @@ import { SkillsService } from 'src/services/skills.service';
 })
 export class EditarSkillComponent implements OnInit {
 
-  constructor(private sSkill: SkillsService, private router: Router) { }
+  skill: Skills = new Skills();
 
-  skills : Skills = new Skills();
-  id: number = 0;
+  constructor(private sSkill: SkillsService, private router: Router, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    
+    const id = this.activatedRoute.snapshot.params['id'];
+    this.sSkill.obtenerSkillsPorId(id).subscribe({
+      next: (res) => {            
+        this.skill = res.skills;
+      },
+      error: (e) => {
+        console.log(e);   
+      }
+    })
   }
 
   onUpdate(): void{
-   
+    const id = this.activatedRoute.snapshot.params['id'];
+    this.sSkill.actualizarSkill(id, this.skill).subscribe({
+      next: (res) => {
+        console.log(res);
+      },
+      error: (e) => {
+        console.log(e);
+      }
+    })
   }
 
 }

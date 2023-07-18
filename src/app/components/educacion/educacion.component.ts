@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Educacion } from 'src/models/Educacion';
+import { AuthService } from 'src/services/auth.service';
 import { EducacionService } from 'src/services/educacion.service';
 
 @Component({
@@ -9,30 +10,35 @@ import { EducacionService } from 'src/services/educacion.service';
 })
 export class EducacionComponent implements OnInit {
 
-  constructor(private sEdu: EducacionService) { }
+  constructor(private sEdu: EducacionService, public authService: AuthService) { }
 
-  isLogged: boolean = true;
-  educacion: Educacion[] = [];
+  educaciones: Educacion[] = [];
 
   ngOnInit(): void {
-    
+    this.cargarEducacion();        
   }
 
-  cargarEducacion(): void{
-    this.sEdu.lista().subscribe( data => {this.educacion = data;})
-    
+  cargarEducacion(){
+    const id_persona = Number(localStorage.getItem('id'));    
+    this.sEdu.listaEducaciones(id_persona).subscribe({ 
+      next: (res) => {                    
+        this.educaciones = res.educaciones;           
+      },
+      error: (e) => {
+        console.log(e);
+      }
+    })
   }
-
-  delete(id?: number){
-    if(id != null){
-      this.sEdu.delete(id).subscribe(
-        data => {
-          window.location.reload();
-        }, err => {
-          alert("Educacion borrada con éxito");
-          window.location.reload();
-        }
-      )
-    }
+  
+  delete(id_educacion: any){    
+    this.sEdu.delete(id_educacion).subscribe({
+      next: (res) => {
+        alert(res.msg)
+      },
+      error: (e) => {
+        console.log(e);
+        
+      }
+    })
   }
 }

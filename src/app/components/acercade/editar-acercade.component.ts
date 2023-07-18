@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Acercade } from 'src/models/Acercade';
 import { AcercadeService } from 'src/services/acercade.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-editar-acercade',
@@ -18,27 +19,51 @@ export class EditarAcercadeComponent implements OnInit {
 
   ngOnInit(): void {
     
-    // const id = this.activatedRoute.snapshot.params['id'];
+    const id = this.activatedRoute.snapshot.params['id'];
 
-    // this.sAcerca.detail(id).subscribe(
-    //   data =>{
-    //     this.acercade = data;
-    //   }, err =>{
-    //     alert("Error del orto");
-    //     this.router.navigate(['portfolio']);
-    //   }
-    // )
+    this.sAcerca.getAcercade(id).subscribe({
+      next: (res) => {
+        this.acercade = res;
+      },
+      error: (e) => {
+        Swal.fire({
+          position: 'center',
+          icon: 'warning',
+          title: e.msg,
+          showConfirmButton: false,
+          timer: 2000
+        })
+      }
+    })
   }
 
   onUpdate(): void{
-    const id = this.activatedRoute.snapshot.params['id'];
-    this.sAcerca.update(id, this.acercade).subscribe(
-      data => {
-        this.router.navigate(['portfolio']);
-      }, err =>{
-        this.router.navigate(['portfolio']);
-      }
-    )
+    const id_persona: number = Number(localStorage.getItem('id'));
+    this.sAcerca.update(id_persona, this.acercade).subscribe({
+      next: (res) => {
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: res.msg,
+          showConfirmButton: false,
+          timer: 2000
+        })
+        setTimeout(() => {
+          this.router.navigate(['/portfolio']);
+        }, 3000);
+      },
+      error: (e) => {
+        Swal.fire({
+          position: 'center',
+          icon: 'warning',
+          title: e.msg,
+          showConfirmButton: false,
+          timer: 2000
+        })
+        setTimeout(() => {
+          this.router.navigate(['/portfolio']);
+        }, 3000);      
+      } 
+  })
   }
-
 }

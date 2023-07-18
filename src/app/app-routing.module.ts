@@ -26,7 +26,7 @@ const routes: Routes = [
   {path: 'editarpro/:id', component:EditarProyectoComponent},
   {path: 'nuevoacerca', component:NuevaAcercadeComponent},
   {path: 'editaracerca/:id', component:EditarAcercadeComponent},
-  {path: 'editarheader/:id', component:EditarHeaderComponent},
+  {path: 'editarheader', component:EditarHeaderComponent},
   {path: 'nuevoskill', component:NuevoSkillComponent},
   {path: 'editarskill/:id', component:EditarSkillComponent}
 ];

@@ -10,22 +10,23 @@ import { SkillsService } from 'src/services/skills.service';
 })
 export class NuevoSkillComponent implements OnInit {
 
-  tecnologia: string = '';
-  porcentaje: number = 0  ;
+  skill: Skills = new Skills();
 
   constructor(private sSkill: SkillsService, private router: Router) { }
 
   ngOnInit(): void {
+    
   }
 
-  onCreate(): void{
-    const skill = new Skills(this.tecnologia, this.porcentaje);
-    this.sSkill.save(skill).subscribe(
-      data => {
-        alert("Skill creada con éxito")
-        this.router.navigate(['portfolio']);
+  onCreate(): void{    
+    this.sSkill.crearSkill(this.skill).subscribe({
+      next: (res) => {
+        console.log(res);
+      },
+      error: (e) => {
+        console.log(e);
       }
-    )
+    })
   }
 }
 

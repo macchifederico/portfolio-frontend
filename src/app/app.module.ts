@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { AppComponent } from './app.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TokenInterceptorService } from 'src/services/token-interceptor.service';
 import { AppRoutingModule } from './app-routing.module';
+
+import { AppComponent } from './app.component';
 import { AuthGuard } from './auth.guard';
 import { AcercadeComponent } from './components/acercade/acercade.component';
 import { EditarAcercadeComponent } from './components/acercade/editar-acercade.component';

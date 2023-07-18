@@ -5,11 +5,11 @@
                 <h2>Ingresar Nueva Skill</h2>
                 <div class="form-group mb-3">
                     <label for="tecnologia">Nombre de la tecnologia:</label>
-                    <input type="text" class="form-control" name="tecnologia" id="tecnologia" [(ngModel)]="tecnologia" required>
+                    <input type="text" class="form-control" name="tecnologia" id="tecnologia" [(ngModel)]="skill.tecnologia" required>
                 </div>
                 <div class="form-group mb-3">
                     <label for="porcentaje">Porcentaje de avance:</label>
-                    <input type="number" class="form-control" name="porcentaje" id="porcentaje" placeholder="" [(ngModel)]="porcentaje" required>
+                    <input type="number" class="form-control" name="porcentaje" id="porcentaje" [(ngModel)]="skill.porcentaje" required>
                 </div>
                 <div class="buttons">
                     <button type="button" class="btn btn-primary btn-block volver" routerLink="/portfolio">Volver</button>

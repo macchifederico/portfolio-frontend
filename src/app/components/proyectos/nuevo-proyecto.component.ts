@@ -10,9 +10,7 @@ import { ProyectoService } from 'src/services/proyecto.service';
 })
 export class NuevoProyectoComponent implements OnInit {
 
-  nombrePro: string = '';
-  descrPro: string = '';
-  urlPro: string = '';
+  proyecto: Proyecto = new Proyecto();
 
   constructor(private router: Router, private sPro: ProyectoService) { }
 
@@ -20,13 +18,15 @@ export class NuevoProyectoComponent implements OnInit {
   }
 
   onCreate(): void {
-
-    const pro = new Proyecto(this.nombrePro, this.descrPro, this.urlPro);
-    this.sPro.save(pro).subscribe(
-      data => {
-        this.router.navigate(['portfolio']);
+    this.sPro.crearProyecto(this.proyecto).subscribe({
+      next: (data) => {          
+        console.log(data);
+      },
+      error: (e) => {
+        console.log(e);
+        
       }
-    )
+    })
   }
 
 }

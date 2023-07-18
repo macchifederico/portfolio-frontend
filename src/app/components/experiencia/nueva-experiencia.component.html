@@ -5,15 +5,15 @@
                 <h2>Editar experiencia laboral</h2>
                 <div class="form-group mb-3">
                     <label for="nombreE">Nombre del Puesto</label>
-                    <input type="text" class="form-control" name="nombreE" id="nombreE" [(ngModel)]="nombreE" required>
+                    <input type="text" class="form-control" name="nombreE" id="nombreE" [(ngModel)]="expe.nombreE" required>
                 </div>
                 <div class="form-group mb-3">
                     <label for="empresaE">Nombre de la empresa</label>
-                    <input type="text" class="form-control" name="empresaE" id="empresaE" [(ngModel)]="empresaE" required>
+                    <input type="text" class="form-control" name="empresaE" id="empresaE" [(ngModel)]="expe.empresaE" required>
                 </div>
                 <div class="form-group mb-3">
                     <label for="descripcionE">Breve descripcion</label>
-                    <input type="text" class="form-control" name="descripcionE" id="descripcionE" [(ngModel)]="descripcionE" required>
+                    <input type="text" class="form-control" name="descripcionE" id="descripcionE" [(ngModel)]="expe.descripcionE" required>
                 </div>
                 <div class="buttons">
                     <button type="button" class="btn btn-primary btn-block volver" routerLink="/portfolio">Volver</button>

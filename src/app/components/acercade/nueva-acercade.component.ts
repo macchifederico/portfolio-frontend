@@ -10,23 +10,24 @@ import { AcercadeService } from 'src/services/acercade.service';
 })
 export class NuevaAcercadeComponent implements OnInit {
 
-  presentProf: string = '';
+  acercade: Acercade = new Acercade();
   
   constructor(private sAcerca: AcercadeService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
-  onCreate(): void{
-    const nuevoAcerca = new Acercade(this.presentProf);
+  onCreate(){
+    const id_persona: number = Number(localStorage.getItem('id'));
 
-    this.sAcerca.save(nuevoAcerca).subscribe(
-      data => {
-        this.router.navigate(['portfolio']);
-      }, err => {
-        this.router.navigate(['portfolio']);
+    this.sAcerca.save(id_persona, this.acercade).subscribe({
+      next: data => {
+        console.log(data);
+      },
+      error: err => {
+        console.log(err);
       }
-      )
+    })
   }
 
 }

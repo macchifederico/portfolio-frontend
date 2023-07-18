@@ -8,27 +8,27 @@ import { Educacion } from '../models/Educacion';
 })
 export class EducacionService {
 
-  eduURL = "http://localhost:3000/api/educacion/"
+  URL = "http://localhost:3000/api/educacion"
 
   constructor(private http: HttpClient) { }
 
-  public lista() : Observable<Educacion[]>{
-    return this.http.get<Educacion[]>(this.eduURL + 'lista');
+  public listaEducaciones(id_persona: any) : Observable<any>{
+    return this.http.get<any>(`${this.URL}`, id_persona);
   }
 
-  public detail(id: number): Observable<Educacion>{
-    return this.http.get<Educacion>(this.eduURL + `detail/${id}`);
+  public educacionPorId(id_persona: any, id_educacion: number): Observable<any>{
+    return this.http.get<any>(`${this.URL}/${id_educacion}`, id_persona);
   }
 
   public save(educacion: Educacion): Observable<any>{
-    return this.http.post<any>(this.eduURL + 'crear', educacion);
+    return this.http.post<any>(`${this.URL}`, educacion);
   }
 
-  public update(id: number, educacion: Educacion): Observable<any>{
-    return this.http.put<any>(this.eduURL + `editar/${id}`, educacion);
+  public update(educacion: Educacion): Observable<any>{
+    return this.http.put<any>(`${this.URL}`, educacion);
   }
 
-  public delete(id: number): Observable<any>{
-    return this.http.delete<any>(this.eduURL + `borrar/${id}`);
+  public delete(id_educacion: any): Observable<any>{    
+    return this.http.delete<any>(`${this.URL}/${id_educacion}`);
   }
 }
