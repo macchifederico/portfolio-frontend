@@ -12,7 +12,8 @@ import Swal from 'sweetalert2';
 })
 export class AcercadeComponent implements OnInit {
 
-  constructor(private sAcerca : AcercadeService, public authService: AuthService, private router: Router) { }
+  constructor(private sAcerca : AcercadeService, public authService: AuthService, private router: Router,
+              private auth: AuthService) { }
   
   isLogged = false;
   acercade: Acercade = new Acercade();
@@ -24,9 +25,7 @@ export class AcercadeComponent implements OnInit {
 
   cargarAcercade(){
     const id_persona: number = Number(localStorage.getItem('id'));
-    if(!id_persona){
-      console.log("No se encontro el id de la persona");
-    }else{
+
       this.sAcerca.getAcercade(id_persona).subscribe({
         next: (res) => {
           this.acercade = res;
@@ -44,8 +43,7 @@ export class AcercadeComponent implements OnInit {
           }, 3000);
         }
       })
-    } 
-  }
+    }
 
   delete(id?: number){
     if(id != null){
@@ -57,7 +55,10 @@ export class AcercadeComponent implements OnInit {
             title: res.text,
             showConfirmButton: false,
             timer: 2000
-          })    
+          })
+          setTimeout(() => {
+            this.router.navigate(['/portfolio']);
+          }, 3000);  
         },
         error: (e) => {
           Swal.fire({
@@ -66,7 +67,10 @@ export class AcercadeComponent implements OnInit {
             title: e.text,
             showConfirmButton: false,
             timer: 2000
-          })    
+          })
+          setTimeout(() => {
+            this.router.navigate(['/portfolio']);
+          }, 3000);
         }
       })
     }

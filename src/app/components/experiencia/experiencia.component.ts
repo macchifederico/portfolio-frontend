@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ExpLaboral } from 'src/models/ExpLaboral';
 import { AuthService } from 'src/services/auth.service';
 import { ExplaboralService } from 'src/services/explaboral.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-experiencia',
@@ -41,11 +42,28 @@ export class ExperienciaComponent implements OnInit {
     if(id_experiencia!= null){
       this.sExp.delete(id_experiencia, id_persona).subscribe({
         next: (res) => {
-          alert(res.msg)
-          console.log(res);
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: res.text,
+            showConfirmButton: false,
+            timer: 2000
+          })
+          setTimeout(() => {
+            this.router.navigate(['/portfolio']);
+          }, 3000);
         },
-        error: (e) => {
-          console.log(e);
+        error: (err) => {
+          Swal.fire({
+            position: 'center',
+            icon: 'warning',
+            title: err.text,
+            showConfirmButton: false,
+            timer: 2000
+          })
+          setTimeout(() => {
+            this.router.navigate(['/portfolio']);
+          }, 3000);
           
         }
       })

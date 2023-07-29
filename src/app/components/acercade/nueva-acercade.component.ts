@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Acercade } from 'src/models/Acercade';
 import { AcercadeService } from 'src/services/acercade.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-nueva-acercade',
@@ -21,11 +22,29 @@ export class NuevaAcercadeComponent implements OnInit {
     const id_persona: number = Number(localStorage.getItem('id'));
 
     this.sAcerca.save(id_persona, this.acercade).subscribe({
-      next: data => {
-        console.log(data);
+      next: res => {
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: res.text,
+          showConfirmButton: false,
+          timer: 2000
+        })
+        setTimeout(() => {
+          this.router.navigate(['/portfolio']);
+        }, 3000);
       },
       error: err => {
-        console.log(err);
+        Swal.fire({
+          position: 'center',
+          icon: 'warning',
+          title: err.text,
+          showConfirmButton: false,
+          timer: 2000
+        })
+        setTimeout(() => {
+          this.router.navigate(['/portfolio']);
+        }, 3000);
       }
     })
   }

@@ -13,7 +13,6 @@ import { NuevaAcercadeComponent } from './components/acercade/nueva-acercade.com
 import { EditarEducacionComponent } from './components/educacion/editar-educacion.component';
 import { EducacionComponent } from './components/educacion/educacion.component';
 import { NuevaEducacionComponent } from './components/educacion/nueva-educacion.component';
-import { DeleteExperienciaComponent } from './components/experiencia/delete-experiencia.component';
 import { EditarExperienciaComponent } from './components/experiencia/editar-experiencia.component';
 import { ExperienciaComponent } from './components/experiencia/experiencia.component';
 import { NuevaExperienciaComponent } from './components/experiencia/nueva-experiencia.component';
@@ -29,7 +28,6 @@ import { ProyectosComponent } from './components/proyectos/proyectos.component';
 import { EditarSkillComponent } from './components/skills/editar-skill.component';
 import { NuevoSkillComponent } from './components/skills/nuevo-skill.component';
 import { SkillsComponent } from './components/skills/skills.component';
-
 
 @NgModule({
   declarations: [
@@ -48,7 +46,6 @@ import { SkillsComponent } from './components/skills/skills.component';
     SkillsComponent,
     NuevaExperienciaComponent,
     EditarExperienciaComponent,
-    DeleteExperienciaComponent,
     NuevaEducacionComponent,
     EditarEducacionComponent,
     EditarSkillComponent,
@@ -62,7 +59,7 @@ import { SkillsComponent } from './components/skills/skills.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [
     AuthGuard,

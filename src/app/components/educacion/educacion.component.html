@@ -8,9 +8,10 @@
             <div class="card-body">
             <h5 class="card-title">{{educacion.titulo}}</h5>
             <p class="card-text">{{educacion.institucion}}</p>
-            <p class="card-text text-muted">{{educacion.fechaInicio +" - "+ educacion.fechaFin}}</p>
+            <p class="card-text text-muted">{{educacion.fechaInicio | date: "shortDate"}} - {{educacion.fechaFin | date: "shortDate"}}</p>
             <i class="fa-solid fa-trash trash" *ngIf="authService.loggedIn()" (click)="delete(educacion.id)"></i>
             <i class="fa-solid fa-pencil pencil" *ngIf="authService.loggedIn()" routerLink="/editaredu/{{educacion.id}}"></i>
         </div>
     </div>
+    
 </div>

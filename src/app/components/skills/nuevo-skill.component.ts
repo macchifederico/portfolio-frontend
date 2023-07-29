@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Skills } from 'src/models/Skills';
 import { SkillsService } from 'src/services/skills.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-nuevo-skill',
@@ -21,10 +22,28 @@ export class NuevoSkillComponent implements OnInit {
   onCreate(): void{    
     this.sSkill.crearSkill(this.skill).subscribe({
       next: (res) => {
-        console.log(res);
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: res.text,
+          showConfirmButton: false,
+          timer: 2000
+        })
+        setTimeout(() => {
+          this.router.navigate(['/portfolio']);
+        }, 3000);
       },
-      error: (e) => {
-        console.log(e);
+      error: (err) => {
+        Swal.fire({
+          position: 'center',
+          icon: 'warning',
+          title: err.text,
+          showConfirmButton: false,
+          timer: 2000
+        })
+        setTimeout(() => {
+          this.router.navigate(['/portfolio']);
+        }, 3000);
       }
     })
   }

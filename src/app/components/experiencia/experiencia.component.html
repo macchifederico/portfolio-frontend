@@ -11,6 +11,7 @@
             <div class="card-body">
             <h5 class="card-title">{{experiencia.nombreE}}</h5>
             <p class="card-text">{{experiencia.empresaE}}</p>
+            <!-- <p class="card-text">{{experiencia.fechaInicio | date: "shortDate"}} - {{experiencia.fechaFin | date: "shortDate"}}</p> -->
             <p class="card-text text-muted">{{experiencia.descripcionE}}</p>
             <i class="fa-solid fa-trash trash" *ngIf="authService.loggedIn()" (click)="delete(experiencia.id)"></i>
             <i class="fa-solid fa-pencil pencil" *ngIf="authService.loggedIn()" [routerLink]="['/editarexp', experiencia.id]"></i>

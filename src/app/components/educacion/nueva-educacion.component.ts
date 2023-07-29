@@ -16,7 +16,7 @@ export class NuevaEducacionComponent implements OnInit {
   institucion: string = '';
   fechaInicio: string = '';
   fechaFin: string = '';
-
+  
   edu: Educacion = new Educacion();
 
   constructor(private sEdu: EducacionService, private router: Router) {
@@ -26,8 +26,8 @@ export class NuevaEducacionComponent implements OnInit {
   }
 
   onCreate(){
-    this.sEdu.save(this.edu).subscribe({
-      next: (res) => {
+    this.sEdu.save(this.edu).subscribe({      
+      next: (res) => {        
         Swal.fire({
             position: 'center',
             icon: 'success',
