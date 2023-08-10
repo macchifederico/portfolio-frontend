@@ -15,7 +15,7 @@ import { EditarHeaderComponent } from './components/header/editar-header.compone
 import { NuevoProyectoComponent } from './components/proyectos/nuevo-proyecto.component';
 
 const routes: Routes = [
-  {path: '', redirectTo:'portfolio',pathMatch:'full'},
+  {path: '', redirectTo:'login',pathMatch:'full'},
   {path:'portfolio', component:PortfolioComponent},
   {path:'login', component:LoginComponent},
   {path:'nuevaexp', component:NuevaExperienciaComponent},
